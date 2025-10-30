@@ -93,4 +93,3 @@ MIT
 
 ---
 
-Built by Cremacious
