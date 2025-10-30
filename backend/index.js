@@ -6,6 +6,7 @@ import path from 'path';
 import passport from 'passport';
 import session from 'express-session';
 import connectMongo from 'connect-mongodb-session';
+import bodyParser from 'body-parser';
 
 import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
@@ -64,21 +65,25 @@ const server = new ApolloServer({
 
 await server.start();
 
+app.use(bodyParser.json());
+
 app.use(
   '/graphql',
   cors({
     origin: 'http://localhost:3000',
     credentials: true,
   }),
-  express.json(),
-
+  bodyParser.json(),
+  (req, res, next) => {
+    console.log('DEBUG req.body:', req.body);
+    next();
+  },
   expressMiddleware(server, {
     context: async ({ req, res }) => buildContext({ req, res }),
   })
 );
 
 app.use(express.static(path.join(__dirname, 'frontend/dist')));
-
 
 app.use((req, res) => {
   res.sendFile(path.join(__dirname, 'frontend/dist', 'index.html'));
