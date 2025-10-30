@@ -3,6 +3,7 @@
 A full-stack GraphQL finance tracker built with Express, Apollo Server, MongoDB, and React.
 
 ## Features
+
 - User authentication (sign up, login, logout)
 - Track financial transactions
 - GraphQL API with Apollo Server
@@ -12,16 +13,19 @@ A full-stack GraphQL finance tracker built with Express, Apollo Server, MongoDB,
 - Modern React frontend (Vite, TailwindCSS)
 
 ## Technologies Used
+
 - **Backend:** Express v5, Apollo Server v4, MongoDB, Mongoose, Passport.js, GraphQL
 - **Frontend:** React, Vite, Apollo Client, TailwindCSS
 
 ## Getting Started
 
 ### Prerequisites
+
 - Node.js (v18+ recommended)
 - MongoDB Atlas or local MongoDB instance
 
 ### Installation
+
 1. Clone the repository:
    ```bash
    git clone https://github.com/Cremacious/gql-finance.git
@@ -45,6 +49,7 @@ A full-stack GraphQL finance tracker built with Express, Apollo Server, MongoDB,
    ```
 
 ### Running the App
+
 - Start the backend server:
   ```bash
   npm run dev
@@ -58,6 +63,7 @@ A full-stack GraphQL finance tracker built with Express, Apollo Server, MongoDB,
 - Frontend runs at `http://localhost:3000`
 
 ## Project Structure
+
 ```
 gql-finance/
 ├── backend/
@@ -76,11 +82,13 @@ gql-finance/
 ```
 
 ## Scripts
+
 - `npm run dev` — Start backend in development mode
 - `npm start` — Start backend in production mode
 - `npm run build` — Install and build frontend
 
 ## License
+
 MIT
 
 ---
