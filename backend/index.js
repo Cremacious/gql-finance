@@ -43,11 +43,11 @@ store.on('error', (err) => console.log(err));
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
-    resave: false, 
-    saveUninitialized: false, 
+    resave: false,
+    saveUninitialized: false,
     cookie: {
       maxAge: 1000 * 60 * 60 * 24 * 7,
-      httpOnly: true, 
+      httpOnly: true,
     },
     store: store,
   })
@@ -62,9 +62,7 @@ const server = new ApolloServer({
   plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
 });
 
-
 await server.start();
-
 
 app.use(
   '/graphql',
@@ -73,7 +71,7 @@ app.use(
     credentials: true,
   }),
   express.json(),
- 
+
   expressMiddleware(server, {
     context: async ({ req, res }) => buildContext({ req, res }),
   })
@@ -81,10 +79,10 @@ app.use(
 
 app.use(express.static(path.join(__dirname, 'frontend/dist')));
 
-app.get('*', (req, res) => {
+
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, 'frontend/dist', 'index.html'));
 });
-
 
 await new Promise((resolve) => httpServer.listen({ port: 4000 }, resolve));
 await connectDB();
